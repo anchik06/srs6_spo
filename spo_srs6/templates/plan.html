@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}План возвращения · Музей идей{% endblock %}
+{% block heading %}Возвращаем идеи к жизни{% endblock %}
+{% block subtitle %}Здесь проекты со статусом «Возвращаюсь». Начните с небольшого шага.{% endblock %}
+{% block content %}
+{% include 'partials/filters.html' %}
+<div id="project-list" data-section="{{ section }}">{% include 'partials/project_list.html' %}</div>
+{% endblock %}

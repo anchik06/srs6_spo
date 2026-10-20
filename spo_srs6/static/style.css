@@ -1,0 +1,231 @@
+.museum-menu {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.museum-menu .active {
+    color: var(--tblr-primary);
+    font-weight: bold;
+}
+.project-heading, .project-actions, .step-controls, .filters {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.project-heading {
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.project-heading > div {
+    min-width: 0;
+}
+.project-card {
+    overflow-wrap: anywhere;
+}
+.project-actions {
+    flex-wrap: wrap;
+}
+.status-select {
+    width: 180px;
+}
+.step-input, #search {
+    flex: 1;
+    min-width: 0;
+}
+#status-filter {
+    width: 170px;
+}
+.filters .form-check {
+    flex-shrink: 0;
+}
+.reason {
+    background: var(--tblr-bg-surface-secondary);
+    border-left: 3px solid var(--tblr-purple);
+    padding: 12px;
+    border-radius: 4px;
+}
+@media (max-width: 991px) {
+    .filters {
+        flex-wrap: wrap;
+    }
+    #search {
+        flex-basis: 100%;
+    }
+}
+@media (max-width: 767px) {
+    .navbar .container-xl {
+        flex-wrap: wrap;
+    }
+    .museum-menu {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        padding-top: 16px;
+    }
+    .museum-menu.open {
+        display: flex;
+    }
+    .step-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .step-input {
+        flex: auto;
+    }
+    #status-filter {
+        width: 100%;
+    }
+    .project-actions .status-select {
+        width: 100%;
+    }
+    .container-xl {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    .page-title {
+        font-size: 25px;
+    }
+}
+
+html[data-bs-theme] {
+    --tblr-body-bg: #100c12;
+    --tblr-body-color: #f5eaf1;
+    --tblr-bg-surface: #1c151e;
+    --tblr-bg-surface-secondary: #281b29;
+    --tblr-border-color: #493047;
+    --tblr-secondary: #bda6b7;
+    --tblr-primary: #ec4899;
+    --tblr-primary-rgb: 236, 72, 153;
+    --tblr-link-color: #ff85bc;
+    --tblr-link-hover-color: #ffc0de;
+}
+
+body {
+    background: var(--tblr-body-bg);
+    color: var(--tblr-body-color);
+}
+
+.navbar {
+    background: var(--tblr-bg-surface);
+    border-bottom: 1px solid var(--tblr-border-color);
+}
+
+.navbar-brand,
+.nav-link,
+.card-title {
+    color: #f5eaf1;
+}
+
+.card {
+    background: var(--tblr-bg-surface);
+    border-color: var(--tblr-border-color);
+    border-radius: 16px;
+}
+
+.project-card {
+    border-left: 3px solid #ec4899;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.project-card:hover {
+    border-color: #ec4899;
+    box-shadow: 0 6px 24px #ec48991a;
+}
+
+.form-control,
+.form-select {
+    background-color: #160f17;
+    color: #f5eaf1;
+    border-color: #54334c;
+}
+
+.form-control::placeholder {
+    color: #a88b9e;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: #201321;
+    color: #ffffff;
+    border-color: #ec4899;
+    box-shadow: 0 0 0 3px #ec489926;
+}
+
+.form-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23ff85bc' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+}
+
+.btn-primary {
+    background: #ec4899;
+    border-color: #ec4899;
+    color: #ffffff;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: #db2777;
+    border-color: #db2777;
+    color: #ffffff;
+}
+
+.btn-outline-primary {
+    color: #ff85bc;
+    border-color: #ec4899;
+}
+
+.btn-outline-primary:hover {
+    background: #ec4899;
+    border-color: #ec4899;
+    color: #ffffff;
+}
+
+.btn-outline-secondary {
+    color: #dbc5d5;
+    border-color: #725269;
+}
+
+.text-primary,
+.museum-menu .active {
+    color: #ff85bc !important;
+}
+
+.reason {
+    border-left-color: #ec4899;
+}
+
+.form-check-input:checked {
+    background-color: #ec4899;
+    border-color: #ec4899;
+}
+
+.stat-card {
+    height: 100%;
+    background: linear-gradient(135deg, var(--tblr-bg-surface), #39172d);
+}
+
+.stat-card .h1 {
+    color: #ff85bc;
+    margin-top: 10px;
+}
+
+.stat-card .subheader {
+    color: #dbc5d5;
+}
+
+.museum-banner {
+    padding: 24px;
+    margin-bottom: 24px;
+    border: 1px solid #74304f;
+    border-radius: 16px;
+    background: linear-gradient(120deg, #341427, #651d46);
+}
+
+.museum-banner h2 {
+    color: #ffffff;
+}
+
+.museum-banner p {
+    color: #efd3e3;
+    margin-bottom: 0;
+}

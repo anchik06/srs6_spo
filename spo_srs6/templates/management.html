@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Центр управления{% endblock %}
+{% block heading %}Центр управления{% endblock %}
+{% block subtitle %}{% endblock %}
+
+{% block statistics %}{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    <section class="col-12 col-lg-8">
+        <div class="card card-body mb-4">
+            <h2 class="card-title">Поиск проектов</h2>
+
+            <form id="filters" class="row g-3">
+                <div class="col-12">
+                    <input
+                        class="form-control"
+                        name="search"
+                        placeholder="Название, описание или категория"
+                        aria-label="Поиск"
+                    >
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <select
+                        name="category"
+                        id="filter-category"
+                        class="form-select"
+                        aria-label="Категория"
+                    ></select>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <select
+                        name="status"
+                        class="form-select"
+                        aria-label="Статус"
+                    >
+                        <option value="">Все статусы</option>
+                        <option value="sleeping">На паузе</option>
+                        <option value="active">Возвращаюсь</option>
+                        <option value="finished">Завершён</option>
+                    </select>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <select
+                        name="favorite"
+                        class="form-select"
+                        aria-label="Избранное"
+                    >
+                        <option value="">Все проекты</option>
+                        <option value="true">Только избранные</option>
+                        <option value="false">Без избранного</option>
+                    </select>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <select
+                        name="ordering"
+                        class="form-select"
+                        aria-label="Сортировка"
+                    >
+                        <option value="-created_at">Сначала новые</option>
+                        <option value="created_at">Сначала старые</option>
+                        <option value="title">Название А–Я</option>
+                        <option value="-title">Название Я–А</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+
+        <p id="project-count" class="text-secondary" aria-live="polite"></p>
+        <div id="managed-projects" class="d-grid gap-3"></div>
+    </section>
+
+    <aside class="col-12 col-lg-4">
+        <div class="card card-body mb-4">
+            <h2 class="card-title" id="project-form-title">Новый проект</h2>
+
+            <form id="managed-project-form" class="d-grid gap-3">
+                <input type="hidden" name="id">
+
+                <label class="form-label">
+                    Название
+                    <input
+                        name="title"
+                        class="form-control"
+                        required
+                        maxlength="120"
+                    >
+                </label>
+
+                <label class="form-label">
+                    Категория
+                    <select
+                        name="category"
+                        id="project-category"
+                        class="form-select"
+                        required
+                    ></select>
+                </label>
+
+                <label class="form-label">
+                    Описание
+                    <textarea
+                        name="description"
+                        class="form-control"
+                        required
+                        maxlength="1000"
+                    ></textarea>
+                </label>
+
+                <label class="form-label">
+                    Почему остановился
+                    <input
+                        name="stop_reason"
+                        class="form-control"
+                        required
+                        maxlength="250"
+                    >
+                </label>
+
+                <label class="form-label">
+                    Следующий маленький шаг
+                    <input
+                        name="next_step"
+                        class="form-control"
+                        required
+                        maxlength="250"
+                    >
+                </label>
+
+                <label class="form-label">
+                    Статус
+                    <select name="status" class="form-select">
+                        <option value="sleeping">На паузе</option>
+                        <option value="active">Возвращаюсь</option>
+                        <option value="finished">Завершён</option>
+                    </select>
+                </label>
+
+                <label class="form-check">
+                    <input
+                        type="checkbox"
+                        name="favorite"
+                        class="form-check-input"
+                    >
+                    <span class="form-check-label">Избранное</span>
+                </label>
+
+                <button class="btn btn-primary" type="submit">
+                    Сохранить проект
+                </button>
+
+                <button
+                    class="btn btn-outline-secondary"
+                    type="button"
+                    id="cancel-project"
+                >
+                    Очистить форму
+                </button>
+            </form>
+        </div>
+
+        <div class="card card-body">
+            <h2 class="card-title">Категории</h2>
+
+            <form id="category-form" class="d-grid gap-2 mb-3">
+                <input type="hidden" name="id">
+
+                <label class="form-label">
+                    Название категории
+                    <input
+                        name="name"
+                        class="form-control"
+                        required
+                        maxlength="80"
+                    >
+                </label>
+
+                <button class="btn btn-primary" type="submit">
+                    Сохранить категорию
+                </button>
+
+                <button
+                    class="btn btn-outline-secondary"
+                    type="button"
+                    id="cancel-category"
+                >
+                    Очистить форму
+                </button>
+            </form>
+
+            <div id="managed-categories" class="d-grid gap-3"></div>
+        </div>
+    </aside>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'management.js' %}"></script>
+{% endblock %}

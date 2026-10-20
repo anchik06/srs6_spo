@@ -1,0 +1,20 @@
+<section class="card">
+    <div class="card-header"><h2 class="card-title">Добавить экспонат</h2></div>
+    <form id="project-form" class="card-body">
+        {% csrf_token %}
+        <label class="form-label" for="title">Название проекта</label>
+        <input id="title" name="title" class="form-control mb-3" maxlength="120" required placeholder="Моя давно забытая идея">
+        <label class="form-label" for="category">Категория</label>
+        <select id="category" name="category" class="form-select mb-3" required>
+            {% for category in categories %}<option value="{{ category.pk }}">{{ category.name }}</option>{% endfor %}
+        </select>
+        <label class="form-label" for="description">Что хотел сделать?</label>
+        <textarea id="description" name="description" class="form-control mb-3" rows="3" maxlength="1000" required></textarea>
+        <label class="form-label" for="stop_reason">Почему остановился?</label>
+        <input id="stop_reason" name="stop_reason" class="form-control mb-3" maxlength="250" required>
+        <label class="form-label" for="next_step">Один маленький шаг</label>
+        <input id="next_step" name="next_step" class="form-control mb-3" maxlength="250" required placeholder="Что можно сделать за 15 минут?">
+        <button class="btn btn-primary w-100" type="submit" {% if not categories %}disabled{% endif %}>Сохранить в музее</button>
+        {% if not categories %}<p class="text-secondary mt-2">Сначала добавьте категории через /admin/ или seed_demo.</p>{% endif %}
+    </form>
+</section>

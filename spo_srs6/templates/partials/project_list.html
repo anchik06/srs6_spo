@@ -1,0 +1,30 @@
+{% for project in projects %}
+<article class="card project-card mb-3" data-id="{{ project.pk }}">
+    <div class="card-body">
+        <div class="project-heading">
+            <div>
+                <div class="text-secondary small mb-1">Экспонат №{{ project.pk }} · {{ project.category.name }}</div>
+                <h2 class="card-title mb-0">{{ project.title }}</h2>
+            </div>
+            <button class="btn btn-sm {% if project.favorite %}btn-warning{% else %}btn-outline-secondary{% endif %}" data-action="favorite" aria-pressed="{{ project.favorite|yesno:'true,false' }}" aria-label="Избранное: {{ project.title }}">{% if project.favorite %}★{% else %}☆{% endif %}</button>
+        </div>
+        <p class="mt-3">{{ project.description }}</p>
+        <div class="reason mb-3"><div class="subheader mb-1">Почему на паузе</div>{{ project.stop_reason }}</div>
+        <label class="form-label" for="step-{{ project.pk }}">Следующий маленький шаг</label>
+        <div class="step-controls mb-3">
+            <input id="step-{{ project.pk }}" class="form-control step-input" value="{{ project.next_step }}" maxlength="250" required>
+            <button class="btn btn-outline-primary" data-action="step">Сохранить шаг</button>
+        </div>
+        <div class="project-actions">
+            <label class="visually-hidden" for="status-{{ project.pk }}">Статус проекта</label>
+            <select id="status-{{ project.pk }}" class="form-select status-select" data-action="status">
+                {% for value, label in status_choices %}<option value="{{ value }}" {% if project.status == value %}selected{% endif %}>{{ label }}</option>{% endfor %}
+            </select>
+            <span class="badge {% if project.status == 'finished' %}bg-green-lt{% elif project.status == 'active' %}bg-blue-lt{% else %}bg-purple-lt{% endif %}">{{ project.get_status_display }}</span>
+            <button class="btn btn-outline-danger btn-sm ms-auto" data-action="delete">Удалить</button>
+        </div>
+    </div>
+</article>
+{% empty %}
+<div class="card"><div class="empty"><div class="empty-title">В этом зале пока пусто</div><p class="empty-subtitle text-secondary">Измените фильтры или добавьте проект в коллекцию.</p><a class="btn btn-outline-primary" href="{% url 'collection' %}">Открыть коллекцию</a></div></div>
+{% endfor %}

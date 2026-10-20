@@ -1,0 +1,49 @@
+<div class="row g-3 mb-4">
+    <div class="col-6 col-md-4 col-lg-2">
+        <div class="card card-body stat-card">
+            <div class="subheader">Всего экспонатов</div>
+            <div class="h1 mb-0" data-stat="total">{{ stats.total }}</div>
+            <div class="small text-secondary">Ваша коллекция идей</div>
+        </div>
+    </div>
+
+    <div class="col-6 col-md-4 col-lg-2">
+        <div class="card card-body stat-card">
+            <div class="subheader">На паузе</div>
+            <div class="h1 mb-0" data-stat="sleeping">{{ stats.sleeping }}</div>
+            <div class="small text-secondary">Ждут второго шанса</div>
+        </div>
+    </div>
+
+    <div class="col-6 col-md-4 col-lg-2">
+        <div class="card card-body stat-card">
+            <div class="subheader">Возвращаюсь</div>
+            <div class="h1 mb-0" data-stat="active">{{ stats.active }}</div>
+            <div class="small text-secondary">Снова в работе</div>
+        </div>
+    </div>
+
+    <div class="col-6 col-md-4 col-lg-2">
+        <div class="card card-body stat-card">
+            <div class="subheader">Завершены</div>
+            <div class="h1 mb-0" data-stat="finished">{{ stats.finished }}</div>
+            <div class="small text-secondary">Идеи стали результатом</div>
+        </div>
+    </div>
+
+    <div class="col-6 col-md-4 col-lg-2">
+        <div class="card card-body stat-card">
+            <div class="subheader">Избранное</div>
+            <div class="h1 mb-0" data-stat="favorite">{{ stats.favorite }}</div>
+            <div class="small text-secondary">Особенные проекты</div>
+        </div>
+    </div>
+
+    <div class="col-6 col-md-4 col-lg-2">
+        <div class="card card-body stat-card">
+            <div class="subheader">Завершение, %</div>
+            <div class="h1 mb-0" data-stat="percent">{{ stats.percent }}</div>
+            <div class="small text-secondary">Доля завершённых идей</div>
+        </div>
+    </div>
+</div>

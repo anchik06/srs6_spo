@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Музей незаконченных проектов{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'vendor/tabler.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+<div class="page">
+    {% include 'partials/navigation.html' %}
+    <main class="page-wrapper">
+        <div class="container-xl py-4">
+            <div class="page-header mb-4">
+                <div class="page-pretitle">Музей незаконченных проектов</div>
+                <h1 class="page-title">{% block heading %}{% endblock %}</h1>
+                <p class="text-secondary mt-2 mb-0">{% block subtitle %}{% endblock %}</p>
+            </div>
+            <div id="message" class="alert d-none" role="status" aria-live="polite"></div>
+            <!-- Токен нужен для POST-запросов из JavaScript. -->
+            <div hidden>{% csrf_token %}</div>
+            {% block statistics %}
+                {% include 'partials/statistics.html' %}
+            {% endblock %}
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+</div>
+{% block scripts %}
+    <script src="{% static 'script.js' %}"></script>
+{% endblock %}
+</body>
+</html>

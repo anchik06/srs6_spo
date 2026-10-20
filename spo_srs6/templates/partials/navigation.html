@@ -1,0 +1,14 @@
+<header class="navbar navbar-expand-md">
+    <div class="container-xl">
+        <a class="navbar-brand" href="{% url 'collection' %}">
+            <span class="avatar bg-purple-lt me-2">М</span> Музей идей
+        </a>
+        <button id="menu-button" class="btn d-md-none" aria-controls="menu" aria-expanded="false">Меню</button>
+        <nav id="menu" class="museum-menu" aria-label="Основная навигация">
+            <a class="nav-link {% if section == 'collection' %}active{% endif %}" href="{% url 'collection' %}">Коллекция</a>
+            <a class="nav-link {% if section == 'plan' %}active{% endif %}" href="{% url 'plan' %}">План возвращения</a>
+            <a class="nav-link {% if section == 'finished' %}active{% endif %}" href="{% url 'finished' %}">Зал достижений</a>
+            <a class="nav-link {% if section == 'management' %}active{% endif %}" href="{% url 'management' %}">Центр управления</a>
+        </nav>
+    </div>
+</header>

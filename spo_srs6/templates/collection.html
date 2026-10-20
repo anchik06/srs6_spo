@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Коллекция · Музей идей{% endblock %}
+{% block heading %}У каждой идеи есть второй шанс{% endblock %}
+{% block subtitle %}Соберите незаконченные проекты и придумайте один маленький шаг для каждого.{% endblock %}
+{% block content %}
+<section class="museum-banner">
+    <h2>Не заброшено. Просто ждёт своего времени.</h2>
+    <p>
+        Выберите одну идею, придумайте шаг на 15 минут
+        и перенесите её в план возвращения.
+    </p>
+    <a href="{% url 'plan' %}" class="btn btn-primary mt-3">
+        Открыть план возвращения ->
+    </a>
+</section>
+
+<div class="row g-4">
+    <div class="col-lg-8">
+        {% include 'partials/filters.html' %}
+        <div id="project-list" data-section="{{ section }}">{% include 'partials/project_list.html' %}</div>
+    </div>
+    <div class="col-lg-4">{% include 'partials/project_form.html' %}</div>
+</div>
+{% endblock %}

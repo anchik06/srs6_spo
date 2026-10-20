@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}Зал достижений · Музей идей{% endblock %}
+{% block heading %}Идеи, которые стали результатом{% endblock %}
+{% block subtitle %}Завершённые проекты. Их можно вернуть в работу, если хочется продолжить.{% endblock %}
+{% block content %}
+{% include 'partials/filters.html' %}
+<div id="project-list" data-section="{{ section }}">{% include 'partials/project_list.html' %}</div>
+{% endblock %}
